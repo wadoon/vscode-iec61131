@@ -1,0 +1,32 @@
+{
+    "name": "vscode-iec61131",
+    "displayName": "vscode-iec61131",
+    "description": "IEC61131 for VSCode",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "iec61131",
+            "aliases": ["IEC 61131", "iec61131"],
+            "extensions": [".st",".iec61131",".iec"],
+            "configuration": "./language-configuration.json"
+        }],
+        "snippets": [
+			{
+				"language": "iec61131",
+				"path": "./snippets.json"
+			}
+		],
+        "grammars": [{
+            "language": "iec61131",
+            "scopeName": "source.iec61131",
+            "path": "./syntaxes/iec61131.tmLanguage.json"
+        }]
+    }
+}

@@ -1,0 +1,127 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "IEC 61131",
+	"patterns": [
+		{"include": "#ml-comment"},
+		{"include": "#sl-comment"},
+		{"include": "#pas-comment"},
+		{"include": "#keywords"},
+		{"include": "#strings-dq"},
+		{"include": "#strings-sq"},
+		{"include": "#tag"},
+		{"include": "#timeLit"},
+		{"include": "#dtLit"},
+		{"include": "#dateLit"},
+		{"include": "#intLit"},
+		{"include": "#hexLit"},
+		{"include": "#binaryLit"},
+		{"include": "#octalLit"},
+		{"include": "#realLit"},
+		{"include": "#datatype"},
+		{"include": "#visibility"}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{				
+				"name": "keyword.control.iec61131",
+				"match": "(?i)\\b(VAR_OUTPUT|AT|BY|CASE|CONFIGURATION|CONSTANT|DATE|DO|DT|ELSE|ELSEIF|END_CASE|END_CONFIGURATION|END_FOR|END_FUNCTION|END_FUNCTION_BLOCK|END_IF|END_PROGRAM|END_REPEAT|END_RESOURCE|END_STRUCT|END_TYPE|END_VAR|END_WHILE|EXIT|FOR|FUNCTION_BLOCK|FUNCTION|F_EDGE|IF|INTERVAL|NIL|NON_RETAIN|OF|PRIORITY|PROGRAM|READ_ONLY|READ_WRITE|REPEAT|RESOURCE|RETURN|R_EDGE|STRUCT|TASK|THEN|TO|TYPE|UNTIL|VAR|VAR_ACCESS|VAR_CONFIG|VAR_EXTERNAL|VAR_GLOBAL|VAR_INPUT|VAR_IN_OUT|VAR_TEMP|WHILE|WITH|INTERFACE|END_INTERFACE|METHOD|END_METHOD|CLASS|END_CLASS|OVERRIDE|FINAL|ABSTRACT|IMPLEMENTS|SUPER|THIS|EXTENDS|REF_TO|ON|STEP|END_STEP|INITIAL_STEP|ACTION|END_ACTION|FROM|END_TRANSITION|TRANSITION)\\b"
+			}]
+		},
+		"visibility" : {
+			"name": "storage.modifier",
+			"match": "(?i)\\b(internal|public|private|protected)\\b"
+		},
+		"ml-comment":{
+			"begin": "/[*]",
+			"end": "[*]/",
+			"name":"comment",
+			"contentName": "multiline.comment.java"
+		},
+		"pas-comment":{
+			"begin": "[(][*]",
+			"end": "[*][)]",
+			"patterns": [{"include":"#pas-comment"}],
+			"contentName": "multiline.comment.pascal",
+			"name":"comment"
+		},
+		  "sl-comment": {
+				"match" : "//.*$",
+				"name":"comment"
+			},
+		  "tag":{
+			"name": "variable.tag",
+			"begin": "\\{",
+			"end": "\\}"
+		},
+		"timeLit" : {  
+			"name": "constant.time",
+			"match": "(?i)(TIME|T)#((\\d+(.\\d+)?)(D|H|M|S|MS))+"
+		  },
+		  "dtLit":{	 
+		   "name": "constant.date_and_time",
+		   "match": "(DATE_AND_TIME|DT)#\\d+-\\d+-\\d+-(\\d?\\d)(:(\\d?\\d))?(:(\\d?\\d))?(\\.\\d*)?"
+		  },
+		  "timeLit":{
+		   "match": "(?i)(TIME_OF_DAY|TOD)#(\\d\\d)(:(\\d\\d))?(:(\\d\\d))?(\\.\\d+)?",
+		   "name": "constant.time_of_day"
+		  },
+		  "dateLit":{ 
+			"match": "(?i)(DATE|D)#\\d+-\\d+-\\d+",
+			"name": "constant.date"
+		  },
+		  "intLit":{
+			"match": "(?i)(U?[LDS]?INT#)?(10#)?([0-9_]+)",
+			"name": "constant.numeric.dec"
+		  },
+		  "binaryLit": {
+			"match": "(?i)(U?[LDS]?INT#)?2#([01_]+)",
+			"name": "constant.numeric.bin"
+		  },
+		  "octalLit":
+		  {
+			"match": "(?i)(U?[LDS]?INT#)?8#([0-7_]+)",
+			"name": "constant.numeric.oct"
+		  },
+		  "hexLit":
+		  {
+			"match": "(?i)(U?[LDS]?INT#)?16#([0-9a-f_]+)",
+			"name": "constant.numeric.hex"
+		  },
+		  "realLit":
+		  {
+				"match": "(?i)(L?REAL#)?([_0-9]+)?(\\.[_0-9]+)(E-?[0-9_]+)?",
+				"name": "constant.numeric.real"
+		  },
+		  "datatype": {
+				"match": "(?i)ARRAY|ANY|ANY_BIT|ANY_DATE|ANY_DERIVED|ANY_ELEMENTARY|ANY_INT|ANY_MAGNITUDE|ANY_NUM|ANY_REAL|ANY_STRING|BOOL|BYTE|DATE_AND_TIME|[LD]?INT|[LD]?WORD|L?REAL|W?STRING|TIME|TIME_OF_DAY|TOD|WSTRING",
+				"name": "storage.type"
+		  },
+		  "operators":{
+			  "name": "operators.iec61131",
+			  "match":"(?i)REF=|=>|:=|MOD|NOT|<>|+|**|AND|OR|XOR\\b"
+		  },
+		"strings-dq": {
+			"name": "string.quoted.double.iec61131",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"match": "\\$(L|N|P|R|T\\$|')",
+					"name": "constant.character.escape.iec61131"
+				}	
+			]
+		},
+		"strings-sq": {
+			"name": "string.quoted.single.iec61131",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"match": "\\$(L|N|P|R|T\\$|')",
+					"name": "constant.character.escape.iec61131"
+				}
+			]
+		}
+	},
+	"scopeName": "source.iec61131"
+}

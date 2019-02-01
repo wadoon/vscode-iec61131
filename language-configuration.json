@@ -1,0 +1,48 @@
+//https://code.visualstudio.com/api/language-extensions/language-configuration-guide
+{
+    "comments": {
+        "lineComment": "//",
+        "blockComment": [ "/*", "*/" ]
+    },
+    // symbols used as brackets
+    "brackets": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"]
+    ],
+    // symbols that are auto closed when typing
+    "autoClosingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["'", "'"]
+    ],
+    // symbols that that can be used to surround a selection
+    "surroundingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["'", "'"]
+    ],
+    "autoCloseBefore": ";:.,=}])>` \n\t",
+	"folding": {
+		"markers": {
+			"start": "^\\s*//\\s*#?region\\b",
+			"end": "^\\s*//\\s*#?endregion\\b"
+        },
+        "program": {"start":"(?i)^\\s*\\bPROGRAM\\b", "end": "(?i)\\b\\s*END_PROGRAM\\b"},
+        "fb": {"start":"(?i)\\bFUNCTION_BLOCK\\b", "end": "(?i)\\bEND_FUNCTION_BLOCK\\b"},
+        "func": {"start":"(?i)\\bFUNCTION\\b", "end": "(?i)\\bEND_FUNCTION\\b"},                
+        "class": {"start":"(?i)\\bCLASS\\b", "end": "(?i)\\bEND_CLASS\\b"},
+        "method": {"start":"(?i)\\bMETHOD\\b", "end": "(?i)\\bEND_METHOD\\b"},
+        "interface": {"start":"(?i)\\bINTERFACE\\b", "end": "(?i)\\bEND_INTERFACE\\b"},
+        "var": {"start":"(?i)\\bVAR(_(INPUT|OUTPUT|GLOBAL|EXTERN))?\\b", "end": "(?i)\\bEND_VAR\\b"}
+	},
+	//"wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
+	//"indentationRules": {
+    //  "increaseIndentPattern": "^((?!\\/\\/).)*(\\{[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$",
+	//	"decreaseIndentPattern": "^((?!.*?\\/\\*).*\\*/)?\\s*[\\}\\]].*$"
+	//}
+}
